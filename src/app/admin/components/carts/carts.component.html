@@ -1,0 +1,27 @@
+<div class="cartBox">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Date</th>
+                <th style="width: 25%;">Quantity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of adminCarts; let index = index" >
+                <td></td>
+                <td>{{item.date | date:"shortDate"}}</td>
+                <td>
+                    {{item.products.length}}
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteCart(item.cartsId)" >Delete</button>
+                    <button class="btn btn-primary" (click)="view(index)" >View</button>
+                </td>
+            </tr>
+        </tbody> 
+        
+    </table>
+    
+</div>
