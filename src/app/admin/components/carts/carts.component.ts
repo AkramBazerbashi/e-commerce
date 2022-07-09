@@ -12,7 +12,7 @@ export class CartsComponent implements OnInit {
 
   adminCarts!: AdminCarts[];
   viewCart: Product[]= [];
-  constructor(private service: AdminCartsService, private productService: ProductsService) { }
+  constructor(private service: AdminCartsService, private productService: ProductsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllCarts();
@@ -34,5 +34,10 @@ export class CartsComponent implements OnInit {
   view(index: number){
     for (let i= 0; i< this.adminCarts[index].products.length; i++)
     this.viewCart.push(this.productService.getProductById(this.adminCarts[index].products[i].productId)!);
+
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal},
+    });
   }
 }
